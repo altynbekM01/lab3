@@ -1,12 +1,12 @@
 
-  <div fxFlex *ngIf="dishes">
 
-    <div class="container"
+
+    <div fxFlex *ngIf="dishes" class="container"
          fxLayout="column"
          fxLayoutGap="10px">
       <mat-list fxFlex>
-        <mat-list-item *ngFor="let dish of dishes">
-          <img matListAvatar src={{dish.image}} alt={{dish.name}}>
+        <mat-list-item *ngFor="let dish of dishes" >
+          <img matListAvatar src="{{dish.image}}" alt={{dish.name}}>
 
           <h1 mattine> {{dish.name}} </h1>
           <p matLine>
@@ -30,8 +30,9 @@
         <div fxFlex>
           <mat-grid-list cols="2" rowHeight="200px">
 
-            <mat-grid-tile *ngFor="let dish of dishes" [routerLink]="['/dishdetail', dish.id]">
-              <img height="200px" src={{dish.image}} alt={{dish.name}}>
+            <mat-grid-tile *ngFor="let dish of dishes" [routerLink]="['/dishdetail', dish.id]" appHighlight >
+
+            <img height="200px" src="{{baseURL + dish.image}}" alt={{dish.name}}>
               <mat-grid-tile-footer>
                 <h1>{{dish.name | uppercase}}</h1>
               </mat-grid-tile-footer>

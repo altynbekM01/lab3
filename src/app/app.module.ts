@@ -14,6 +14,7 @@ import { MenuComponent } from './menu/menu.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DishdetailComponent } from './dishdetail/dishdetail.component';
 import { DishService } from './services/dish.service';
+
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AboutComponent } from './about/about.component';
@@ -30,8 +31,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-
-
+import {HttpClientModule} from "@angular/common/http";
+import {baseURL} from "./shared/baseurl";
+import { HighlightDirective } from './directives/highlight.directive';
 
 
 @NgModule({
@@ -44,7 +46,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     AboutComponent,
     HomeComponent,
     ContactComponent,
-    LoginComponent
+    LoginComponent,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,
@@ -65,12 +68,14 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatSlideToggleModule,
     ReactiveFormsModule,
     MatProgressSpinnerModule,
+    HttpClientModule,
 
 
 
 
 ],
-  providers: [DishService],
+  providers: [DishService,
+    {provide:'BaseURL', useValue: baseURL}],
   bootstrap: [AppComponent],
   entryComponents: [
     LoginComponent
